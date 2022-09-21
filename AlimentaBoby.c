@@ -1,6 +1,6 @@
 /*******************************************************************************************
 *
-*   raylib - classic game: floppy
+*   raylib - classic game: Boby
 *
 *   Sample game developed by Ian Eito, Albert Martos and Ramon Santamaria
 *
@@ -8,9 +8,12 @@
 *   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
 *
 *   Copyright (c) 2015 Ramon Santamaria (@raysan5)
+
+    Adaptado por Nathalia Cristina Santos e Maria Julia
+    Motivos puramente educacionais sem fins lucrativos 
+    Projeto final da Aula de CAP, professora Joyce
 *
 ********************************************************************************************/
-
 #include "raylib.h"
 
 #if defined(PLATFORM_WEB)
@@ -21,8 +24,8 @@
 // Some Defines
 //----------------------------------------------------------------------------------
 #define MAX_TUBES 100
-#define FLOPPY_RADIUS 24
-#define TUBES_WIDTH 80
+#define FLOPPY_RADIUS 20
+#define TUBES_WIDTH 50
 
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
@@ -35,7 +38,7 @@ typedef struct Floppy {
 
 typedef struct Tubes {
     Rectangle rec;
-    Color color;
+    Color black;
     bool active;
 } Tubes;
 
@@ -236,3 +239,12 @@ void UpdateDrawFrame(void)
     UpdateGame();
     DrawGame();
 }
+/* CREDITOS
+icone do axolote -- <a href="https://www.flaticon.com/br/icones-gratis/axolotl" title="axolotl ícones">Axolotl ícones criados por Freepik - Flaticon</a>
+
+
+
+
+
+
+*/

@@ -1,6 +1,6 @@
 /*******************************************************************************************
 *
-*   raylib - classic game: Boby
+*   raylib - classic game: floppy
 *
 *   Sample game developed by Ian Eito, Albert Martos and Ramon Santamaria
 *
@@ -8,12 +8,9 @@
 *   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
 *
 *   Copyright (c) 2015 Ramon Santamaria (@raysan5)
-
-    Adaptado por Nathalia Cristina Santos e Maria Julia
-    Motivos puramente educacionais sem fins lucrativos 
-    Projeto final da Aula de CAP, professora Joyce
 *
 ********************************************************************************************/
+
 #include "raylib.h"
 
 #if defined(PLATFORM_WEB)
@@ -24,8 +21,8 @@
 // Some Defines
 //----------------------------------------------------------------------------------
 #define MAX_TUBES 100
-#define FLOPPY_RADIUS 20
-#define TUBES_WIDTH 50
+#define FLOPPY_RADIUS 24
+#define TUBES_WIDTH 80
 
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
@@ -38,7 +35,7 @@ typedef struct Floppy {
 
 typedef struct Tubes {
     Rectangle rec;
-    Color black;
+    Color color;
     bool active;
 } Tubes;
 
@@ -112,7 +109,7 @@ void InitGame(void)
 {
     floppy.radius = FLOPPY_RADIUS;
     floppy.position = (Vector2){80, screenHeight/2 - floppy.radius};
-    tubesSpeedX = 2;
+    tubesSpeedX = 3;
 
     for (int i = 0; i < MAX_TUBES; i++)
     {
@@ -197,7 +194,7 @@ void DrawGame(void)
 {
     BeginDrawing();
 
-        ClearBackground(RAYWHITE);
+        ClearBackground(BLUE);
 
         if (!gameOver)
         {
@@ -217,12 +214,15 @@ void DrawGame(void)
                 superfx = false;
             }
 
-            DrawText(TextFormat("%04i", score), 20, 20, 40, GRAY);
-            DrawText(TextFormat("HI-SCORE: %04i", hiScore), 20, 70, 20, LIGHTGRAY);
+            DrawText(TextFormat("%04i", score), 20, 20, 40, WHITE);
+            DrawText(TextFormat("Maior Distancia: %04i", hiScore), 20, 70, 20, WHITE);
 
-            if (pause) DrawText("GAME PAUSED", screenWidth/2 - MeasureText("GAME PAUSED", 40)/2, screenHeight/2 - 40, 40, GRAY);
+            if (pause) DrawText("JOGO PAUSADO", screenWidth/2 - MeasureText("GAME PAUSED", 40)/2, screenHeight/2 - 40, 40, WHITE);
         }
-        else DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth()/2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
+        else{
+            DrawText("PRESSIONE [ENTER] PARA JOGAR NOVAMENTE", GetScreenWidth()/2 - MeasureText("PRESSIONE [ENTER]PARA JOGAR NOVAMENTE", 20)/2, GetScreenHeight()/2 - 50, 20, WHITE);
+            DrawText("DISTANCIAS ANTERIORES", GetScreenWidth()/2 - MeasureText("", 20)/2, GetScreenHeight()/2 - 10, 20, WHITE);
+        }
 
     EndDrawing();
 }
@@ -239,12 +239,3 @@ void UpdateDrawFrame(void)
     UpdateGame();
     DrawGame();
 }
-/* CREDITOS
-icone do axolote -- <a href="https://www.flaticon.com/br/icones-gratis/axolotl" title="axolotl ícones">Axolotl ícones criados por Freepik - Flaticon</a>
-
-
-
-
-
-
-*/
